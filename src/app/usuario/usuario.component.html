@@ -1,0 +1,12 @@
+<h2>Usuarios</h2>
+
+<ul class="users">
+    <!--Para poder utilizar *ngFor hay que importar CommonModule-->
+    <li *ngFor="let user of users"
+        [class.selected]="user === selectedUser"
+        (click)="onSelect(user)">
+        <span class="badge">{{user.id}}</span> {{user.name}}
+    </li>
+</ul>
+
+<app-user-detail [user]="selectedUser" />
