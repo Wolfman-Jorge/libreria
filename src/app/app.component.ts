@@ -11,5 +11,16 @@ import { UsuarioComponent } from './usuario/usuario.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  
   title = 'Libreria';
+  deptName: string = "";
+
+  onSelect(deptName: string):void{
+    this.deptName = deptName;
+  }
+
+  getDeptName(){
+    return this.deptName;
+  }
+
 }

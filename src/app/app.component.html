@@ -3,9 +3,9 @@
 
 <nav class="btHoriz">
     <!-- Para que estos enlaces funcionen hay que importar RouterModule en el .ts padre del enlace-->
-    <a routerLink="/crud">Usuario</a>
-    <a routerLink="/libros">Libros</a>
-    <a routerLink="/alquileres">Alquileres</a>
+    <a (click)='onSelect("usuario")' routerLink="/crud">Usuario</a>
+    <a (click)='onSelect("libro")' routerLink="/crud">Libros</a>
+    <a (click)='onSelect("alquiler")' routerLink="/crud">Alquileres</a>
     
 </nav>
 

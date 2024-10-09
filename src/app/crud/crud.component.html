@@ -1,8 +1,54 @@
 
 <div class="verti">
-    <button (click)="onCreate()">Crear</button>
-    <button (click)="onUpdate()">Modificar</button>
-    <button (click)="onShow()">Mostrar</button>
-    <button (click)="onSearch()">Buscar</button>
-    <button (click)="onDelete()">Eliminar</button>
+
+    <div>
+        <button (click)="onCreate()">Crear</button>
+        <button (click)="onUpdate()">Modificar</button>
+        <button (click)="onShow()">Mostrar</button>
+        <button (click)="onSearch()">Buscar</button>
+        <button (click)="onDelete()">Eliminar</button>
+
+    </div>
+
+    <div class="formulario">
+        @switch (btName) {
+            @case("create"){
+                <div class="titulo">Crear {{deptName}}</div>
+                <div class="name">
+                    <label>Nombre</label>
+                    <input type="text">
+                </div>
+                       
+            }
+            @case("update"){
+                <div class="titulo">Modificar {{deptName}}</div>
+                <div class="update">
+                    <label>Id</label>
+                    <input type="text">
+                </div>
+            }
+            @case("show"){
+                <div class="titulo">Mostrar {{deptName}}</div>
+            }
+            @case("search"){
+                <div class="titulo">Buscar {{deptName}}</div>
+                <div class="search">
+                    <label>Id</label>
+                    <input type="text">
+                </div>
+            }
+            @case("delete"){
+                <div class="titulo">Eliminar {{deptName}}</div>
+                <div class="search">
+                    <label>Id</label>
+                    <input type="text">
+                </div>
+            }
+        }
+
+               
+    </div>
+
+    <button class="send" (click)="onSend()">Enviar</button>
+
 </div>

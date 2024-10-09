@@ -1,6 +1,6 @@
 
 button{
-    min-width: 80%;
+    min-width: 100px;
     display: block;
     padding: 10px 15px;
     color: black;
@@ -8,13 +8,40 @@ button{
     margin: 10px;
     background-color: #cd966c;
     border-radius: 4px;
-    
+}
+
+label{
+    margin-top: 4px;
+    margin-right: 10px;
 }
 
 .verti{
-    margin-right: 70%;
-    border-right: 5px solid;
+    display: flex;
+    border: 5px solid;
+    margin:60px;
 }
+
+.titulo{
+    text-align: center;
+    margin: 10px 10px;
+}
+
+.formulario{
+    margin-left: 120px;
+}
+
+.name{
+    display: flex;
+    margin: 5px;
+}
+
+.send{
+    height: 40px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
 
 /*
 .vertical{
