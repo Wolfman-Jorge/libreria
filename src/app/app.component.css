@@ -30,6 +30,7 @@ nav a:visited, a:link{
 }*/
 
 nav a:hover{
+    cursor: pointer;
     color: white;
     background-color: #9a5833;
 }
@@ -40,5 +41,17 @@ nav a.active{
 
 .btHoriz{
     margin-left: 30%;
+}
+
+.head{
+    margin-left: 40px;
+}
+
+li{
+    cursor: pointer;
+}
+
+li:hover{
+    color: gray;
 }
 

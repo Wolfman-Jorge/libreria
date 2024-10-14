@@ -2,11 +2,11 @@
 <div *ngIf="user">
 
     <!--Para usar pipes hay que importar CommonModule-->
-    <h2>{{user.name | uppercase}} Details</h2>
+    <h2>{{user.nombre | uppercase}} Details</h2>
     <div><span>id: </span>{{user.id}}</div>
     <div>
         <label>name:
-            <input [(ngModel)]="user.name" placeholder="name" />
+            <input [(ngModel)]="user.nombre" placeholder="name" />
         </label>
     </div>
 </div>

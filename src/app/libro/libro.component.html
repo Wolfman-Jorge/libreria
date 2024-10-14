@@ -1,0 +1,17 @@
+
+
+
+<div *ngIf="libros">
+    <div class="head">
+        Id
+        Nombre
+        Alquilado
+    </div>
+
+    <div *ngFor="let libro of libros">
+        <li>
+            <ul>{{libro.id}} {{libro.titulo}} {{libro.alquilado}}</ul>
+        </li>
+    </div>
+
+</div>

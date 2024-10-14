@@ -1,17 +1,17 @@
 
 <h1>{{title}}</h1>
-
+<!-- Esto no debería pintarlo aquí-->
 <nav class="btHoriz">
     <!-- Para que estos enlaces funcionen hay que importar RouterModule en el .ts padre del enlace-->
-    <a (click)='onSelect("usuario")' routerLink="/crud">Usuario</a>
-    <a (click)='onSelect("libro")' routerLink="/crud">Libros</a>
-    <a (click)='onSelect("alquiler")' routerLink="/crud">Alquileres</a>
+   <!--navegar a usuario/crud-->
+    <a (click)="onNav('usuario')">Usuario</a>
+    <!-- crea otro metodo y haz el enrutador desde el .ts router.navigateTo-->
+    <a (click)="onNav('libro')">Libros</a>
+    <a (click)="onNav('alquiler')">Alquileres</a>
     
 </nav>
 
-
-
-<router-outlet/>
-
 <!-- Hay que añadir la ruta (el endpoint y el componente) en el fichero app.routes.ts -->
+
 <router-outlet />
+<router-outlet/>

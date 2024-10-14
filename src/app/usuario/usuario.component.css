@@ -6,34 +6,33 @@
     width: 15em;
 }
 
-.users li{
+li{
     cursor: pointer;
     position: relative;
     left: 0;
     background-color: #cd966c;
     margin: .5em;
-    padding: .3em 0;
     height: 1.6em;
     border-radius: 4px;
 }
 
-.users li:hover{
+li:hover{
     color: white;
     background-color: #9a5833;
     left: .1em;
 }
 
-.users li.selected{
+li.selected{
     background-color: #7c3b1a;
     color: white;
 }
 
-.users li.selected:hover{
+li.selected:hover{
     background-color: #e6b68b;
     color: white;
 }
 
-.users .badge{
+.badge{
     display: inline-block;
     font-size: small;
     color: white;

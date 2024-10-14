@@ -10,6 +10,12 @@ button{
     border-radius: 4px;
 }
 
+button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #9a5833;
+}
+
 label{
     margin-top: 4px;
     margin-right: 10px;

@@ -15,3 +15,4 @@ export class UserDetailComponent {
 
   @Input() user: User;
 }
+

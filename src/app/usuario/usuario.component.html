@@ -1,12 +1,15 @@
-<h2>Usuarios</h2>
 
-<ul class="users">
-    <!--Para poder utilizar *ngFor hay que importar CommonModule-->
-    <li *ngFor="let user of users"
-        [class.selected]="user === selectedUser"
-        (click)="onSelect(user)">
-        <span class="badge">{{user.id}}</span> {{user.name}}
-    </li>
-</ul>
+<div *ngIf="users">
+    <div class="head">
+        Id
+        Nombre
+    </div>
 
-<app-user-detail [user]="selectedUser" />
+    <div *ngFor="let user of users">
+        <li>
+            <ul (click)="onSelect(user)" >{{user.id}} {{user.nombre}}</ul>
+            <input [(ngModel)]="user.nombre" />
+        </li>
+    </div>
+
+</div>

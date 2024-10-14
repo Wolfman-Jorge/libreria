@@ -3,8 +3,6 @@
 
     <div>
         <button (click)="onCreate()">Crear</button>
-        <button (click)="onUpdate()">Modificar</button>
-        <button (click)="onShow()">Mostrar</button>
         <button (click)="onSearch()">Buscar</button>
         <button (click)="onDelete()">Eliminar</button>
 
@@ -14,41 +12,32 @@
         @switch (btName) {
             @case("create"){
                 <div class="titulo">Crear {{deptName}}</div>
-                <div class="name">
+                <form class="name">
                     <label>Nombre</label>
-                    <input type="text">
-                </div>
+                    <input type="text" value={{users}}>
+                    <app-usuario (detailUser)="getUserDetail($event)"/>
+                </form>
                        
-            }
-            @case("update"){
-                <div class="titulo">Modificar {{deptName}}</div>
-                <div class="update">
-                    <label>Id</label>
-                    <input type="text">
-                </div>
-            }
-            @case("show"){
-                <div class="titulo">Mostrar {{deptName}}</div>
             }
             @case("search"){
                 <div class="titulo">Buscar {{deptName}}</div>
-                <div class="search">
+                <form class="search">
                     <label>Id</label>
                     <input type="text">
-                </div>
+                </form>
             }
             @case("delete"){
                 <div class="titulo">Eliminar {{deptName}}</div>
-                <div class="search">
+                <form class="search">
                     <label>Id</label>
                     <input type="text">
-                </div>
+                </form>
             }
         }
 
                
     </div>
 
-    <button class="send" (click)="onSend()">Enviar</button>
-
 </div>
+
+<router-outlet/>
