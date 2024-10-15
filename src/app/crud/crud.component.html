@@ -14,8 +14,9 @@
                 <div class="titulo">Crear {{deptName}}</div>
                 <form class="name">
                     <label>Nombre</label>
-                    <input type="text" value={{users}}>
-                    <app-usuario (detailUser)="getUserDetail($event)"/>
+
+                    <input name="Prueba" type="text" [(ngModel)]=selectedUser.nombre>
+                  
                 </form>
                        
             }

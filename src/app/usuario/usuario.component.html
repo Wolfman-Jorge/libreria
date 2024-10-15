@@ -6,10 +6,9 @@
     </div>
 
     <div *ngFor="let user of users">
-        <li>
-            <ul (click)="onSelect(user)" >{{user.id}} {{user.nombre}}</ul>
-            <input [(ngModel)]="user.nombre" />
-        </li>
+        <ul>
+            <li [class.selected]="selectedUserId==user.id" (click)="onSelect(user)" >{{user.id}} {{user.nombre}}</li>
+        </ul>
     </div>
 
 </div>

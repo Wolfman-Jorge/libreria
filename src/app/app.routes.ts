@@ -7,6 +7,9 @@ import { AlquilerComponent } from './alquiler/alquiler.component';
 export const routes: Routes = [
     
     // : al principio es una variable
+
+    {path: '' , redirectTo:'crud/usuario', pathMatch:'full'},
+
     {path: 'crud/usuario', component: CrudComponent,
         children: [
             {path: '', component: UsuarioComponent},

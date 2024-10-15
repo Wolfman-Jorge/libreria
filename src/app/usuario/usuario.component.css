@@ -27,10 +27,6 @@ li.selected{
     color: white;
 }
 
-li.selected:hover{
-    background-color: #e6b68b;
-    color: white;
-}
 
 .badge{
     display: inline-block;
@@ -45,4 +41,8 @@ li.selected:hover{
     height: 1.8em;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
+}
+
+ul{
+    list-style-type: none;
 }

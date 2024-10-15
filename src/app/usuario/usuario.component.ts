@@ -34,7 +34,7 @@ export class UsuarioComponent implements OnInit{
       .subscribe(users => this.users = users); //Esto funciona de forma asíncrona
       //subscribe "convierte" el array que se recibe de forma asíncrona y lo almacena en la propiedad users[]
   */
-      this.userService.getUser().subscribe({
+      this.userService.getUsers().subscribe({
         next: (user)=>{
           this.users = user;
           console.log(user);
@@ -45,6 +45,14 @@ export class UsuarioComponent implements OnInit{
 
   onSelect(user: User){
     this.detailUser.emit(user);
+    console.log(user);
+
+    //envia una copia del objeto
+    this.userService.selectedUser = JSON.parse(JSON.stringify(user));
+  }
+
+  get selectedUserId(){
+    return this.userService.selectedUser?.id;
   }
 
 

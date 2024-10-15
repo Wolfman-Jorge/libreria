@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 //Injectable marca esta clase como participante en el sistema de inyección de dependencias
@@ -12,15 +12,22 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   private socioUrl: string = 'http://localhost:8080/libreria/socios';
+  public selectedUser: User;
 
   constructor(
     private http: HttpClient
   ) { }
 
   //Devuelve una fuente de datos
-  getUser(): Observable<User[]>{
+  getUsers(): Observable<User[]>{
     
-    return this.http.get<User[]>(this.socioUrl);
+   // return this.http.get<User[]>(this.socioUrl);
+    return this.http.get<User[]>(this.socioUrl).pipe(
+      tap(result=> this.selectedUser = result[2])
+    )
   }
 
 }
+
+
+
