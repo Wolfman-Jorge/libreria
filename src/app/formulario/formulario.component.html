@@ -1,6 +1,65 @@
-<form class="name">
-    <label>Nombre</label>
 
-    <input name="Prueba" type="text" [(ngModel)]=selectedUser.nombre>
-  
-</form>
+
+<div class="formulario">
+    @switch (deptName) {
+        @case("usuario"){
+            
+            <form class="name">
+                <label>Nombre</label>
+                <input name="userName" type="text" [(ngModel)]=selectedUser.nombre>
+
+                <br>
+                <br>
+
+                <label>Email</label>
+                <input name="email" type="text" [(ngModel)]=selectedUser.email>
+                
+            </form>
+            
+<!--
+            <form [formGroup]="form"(submit)="onSubmit()">
+
+            </form>
+-->
+        }
+        @case("libro"){
+            <form class="name">
+                <label>Título</label>
+                <input name="bookName" type="text" [(ngModel)]=selectedLibro.titulo>
+
+                <br>
+                <br>
+                <label>Alquilado</label>
+                <input name="alquilado" type="checkbox" [(ngModel)]=selectedLibro.alquilado>
+                
+            </form>
+        }
+        @case("alquiler"){
+            <form class="name">
+                <label>IdSocio</label>
+                <input name="socio" type="number" [(ngModel)]=selectedAlquiler.idSocio>
+
+                <label>IdLibro</label>
+                <input name="libro" type="number" [(ngModel)]=selectedAlquiler.idLibro>
+
+                <br>
+                <br>
+                
+                <label>Fecha entrega</label>
+                <input name="fechaEntrega" type="date" [(ngModel)]=selectedAlquiler.fecha>
+
+
+                <label>Vigente</label>
+                <input name="vigente" type="checkbox" [(ngModel)]=selectedAlquiler.vigente>
+
+                <br>
+                <br>
+                
+                <label>Fecha devolución</label>
+                <input name="fechaDevolucion" type="date" [(ngModel)]=selectedAlquiler.fechaDevolucion>
+            </form>
+        }
+    }
+
+           
+</div>

@@ -1,1 +1,48 @@
-<p>alquiler works!</p>
+
+<!--
+<div *ngIf="alquileres">
+    <div class="head">
+        Id
+        IdSocio
+        IdLibro
+        Fecha
+        vigente
+        fechaDevolucion
+    </div>
+
+    <div *ngFor="let alquiler of alquileres">
+        <ul>
+            <li [class.selected]="selectedAlquilerId==alquiler.id" (click)="onSelect(alquiler)" >
+                {{alquiler.id}} {{alquiler.idSocio}} {{alquiler.idLibro}} {{alquiler.fecha}} {{alquiler.vigente}} {{alquiler.fechaDevolucion}}</li>
+        </ul>
+    </div>
+
+</div>
+-->
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID_SOCIO</th>
+                <th>ID_LIBRO</th>
+                <th>FECHA</th>
+                <th>VIGENTE</th>
+                <th>FECHA_DEVOLUCIÓN</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(alqui of alquileres; track alqui.id){
+                <tr [class.select]="selectedAlquilerId==alqui.id" (click)="onSelect(alqui)">
+                    <td>{{alqui.id}}</td>
+                    <td>{{alqui.idSocio}}</td>
+                    <td>{{alqui.idLibro}}</td>
+                    <td>{{alqui.fecha | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{alqui.vigente}}</td>
+                    <td>{{alqui.fechaDevolucion | date: 'dd/MM/yyyy'}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

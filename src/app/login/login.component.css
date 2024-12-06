@@ -1,0 +1,54 @@
+
+h2{
+    color: #9a5833;
+}
+
+div{
+    margin-top: 10px;
+}
+
+input{
+    border-radius: 5px;
+}
+
+label{
+    color: grey;
+}
+
+button{
+    margin-top: 20px;
+    padding: 5px 15px;
+    border-radius: 4px;
+}
+
+button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #cd966c;
+}
+
+.alert{
+    color: red;
+    font-size: 12px;
+}
+
+.form-group{
+    position: relative;
+    width: 300px;
+}
+
+.form-group input{
+    border: 1px solid #ddd;
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.eyeicon{
+    position: absolute;
+    right: -15px;
+    top: 13px;
+    cursor: pointer;
+}

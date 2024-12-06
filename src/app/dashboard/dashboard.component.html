@@ -1,0 +1,19 @@
+
+<div>
+    <button (click)="logout()">Logout</button>
+</div>
+
+<h1>{{title}}</h1>
+<!-- Esto no debería pintarlo aquí -->
+<nav>
+    <div class="btHoriz">
+        <!-- Para que estos enlaces funcionen hay que importar RouterModule en el .ts padre del enlace
+        navegar a usuario/crud -->
+        <a (click)="onNav('usuario')">Usuario</a>
+        <!-- crea otro metodo y haz el enrutador desde el .ts router.navigateTo -->
+        <a (click)="onNav('libro')">Libros</a>
+        <a (click)="onNav('alquiler')">Alquileres</a>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

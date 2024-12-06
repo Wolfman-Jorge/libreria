@@ -1,6 +1,6 @@
 
 
-
+<!--
 <div *ngIf="libros">
     <div class="head">
         Id
@@ -9,9 +9,30 @@
     </div>
 
     <div *ngFor="let libro of libros">
-        <li>
-            <ul>{{libro.id}} {{libro.titulo}} {{libro.alquilado}}</ul>
-        </li>
+        <ul>
+            <li [class.selected]="selectedLibroId==libro.id" (click)="onSelect(libro)" >{{libro.id}} {{libro.titulo}} {{libro.alquilado}}</li>
+        </ul>
     </div>
 
 </div>
+-->
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>ALQUILADO</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @for(libro of libros; track libro.id){
+            <tr [class.select]="selectedLibroId==libro.id" (click)="onSelect(libro)">
+                <td>{{libro.id}}</td>
+                <td>{{libro.titulo}}</td>
+                <td>{{libro.alquilado}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
