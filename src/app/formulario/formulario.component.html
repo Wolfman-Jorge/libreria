@@ -1,65 +1,141 @@
+ 
+ <div class="verti">
 
-
-<div class="formulario">
-    @switch (deptName) {
-        @case("usuario"){
-            
-            <form class="name">
-                <label>Nombre</label>
-                <input name="userName" type="text" [(ngModel)]=selectedUser.nombre>
-
-                <br>
-                <br>
-
-                <label>Email</label>
-                <input name="email" type="text" [(ngModel)]=selectedUser.email>
-                
-            </form>
-            
-<!--
-            <form [formGroup]="form"(submit)="onSubmit()">
-
-            </form>
--->
-        }
-        @case("libro"){
-            <form class="name">
-                <label>Título</label>
-                <input name="bookName" type="text" [(ngModel)]=selectedLibro.titulo>
-
-                <br>
-                <br>
-                <label>Alquilado</label>
-                <input name="alquilado" type="checkbox" [(ngModel)]=selectedLibro.alquilado>
-                
-            </form>
-        }
-        @case("alquiler"){
-            <form class="name">
-                <label>IdSocio</label>
-                <input name="socio" type="number" [(ngModel)]=selectedAlquiler.idSocio>
-
-                <label>IdLibro</label>
-                <input name="libro" type="number" [(ngModel)]=selectedAlquiler.idLibro>
-
-                <br>
-                <br>
-                
-                <label>Fecha entrega</label>
-                <input name="fechaEntrega" type="date" [(ngModel)]=selectedAlquiler.fecha>
-
-
-                <label>Vigente</label>
-                <input name="vigente" type="checkbox" [(ngModel)]=selectedAlquiler.vigente>
-
-                <br>
-                <br>
-                
-                <label>Fecha devolución</label>
-                <input name="fechaDevolucion" type="date" [(ngModel)]=selectedAlquiler.fechaDevolucion>
-            </form>
-        }
+   <li>
+    @if(!btCrear){
+       
+    } @else{
+        <ul><button (click)="onCreate()" [disabled]="isAddDisabled()">{{btCrear}}</button></ul>
     }
+        <ul><button (click)="onUpdate()" [disabled]="isUpdate()">{{btUpdate}}</button></ul>
+        <ul><button (click)="onDelete()" [disabled]="isDelete()">{{btDelete}}</button></ul>
+   </li>
 
-           
+
+    <div class="formulario">
+        @switch (deptName) {
+            @case("USUARIO"){
+                <form [formGroup]="formUser" (ngSubmit)="onSubmit()" class="name">
+                    
+                    <div>
+                        <label>Nombre</label>
+                    </div>
+                    <input name="userName" type="text" formControlName="nombre" (input)="onManualInput()" >
+                        <!--
+                        <label class="form-label">Nombre</label>
+                        -->
+                  
+                    <br>
+                    <br>
+                    
+                    <div>
+                        <label>Email</label>
+                    </div>
+                    <input name="email" type="text" formControlName="email" (input)="onManualInput()">
+                        <!--
+                        <label class="form-label">E-mail</label>
+                    -->
+
+                </form>
+            }
+            @case("LIBRO"){
+                <form [formGroup]="formLibro" (ngSubmit)="onSubmit()" class="name">
+                    
+                    <div>
+                        <label>Título</label>
+                    </div> 
+                                         
+                    <input name="bookName" type="text" formControlName="titulo" (input)="onManualInput()">
+    
+                    <br>
+                    <br>
+                    <!--
+                    <label>Alquilado</label>
+                    <input name="alquilado" type="checkbox" formControlName="mostrarAlquilado">
+                    -->
+                    
+                    <div>
+                        <label>Alquilado</label>
+                    </div>
+                    <!--
+                    <input type="checkbox">
+                    -->               
+                    <input id="alquiladoDisponible" type="text" name="alquilado"  formControlName="mostrarAlquilado" readonly>
+                
+                </form>
+            }
+
+            @case("ALQUILER"){
+                <form [formGroup]="formAlquiler" (ngsubmit)="onSubmit()" class="name">
+                    <div>
+                        <label>Socio</label>
+                    </div>
+                    <input name="socio" type="text" formControlName="socio" readonly>
+
+                    <br>
+                    <br>
+
+                    <div>
+                        <label>Libro</label>
+                    </div>
+                    <input name="libro" type="text" formControlName="libro" readonly>                       
+    
+                </form>
+            }
+
+<!--
+            @case("ALQUILER"){
+                <form [formGroup]="formAlquiler" (ngsubmit)="onSubmit()" class="name">
+                    <label>IdSocio</label>
+                    <input name="socio" type="number" formControlName="idSocio">
+    
+                    <label>IdLibro</label>
+                    <input name="libro" type="number" formControlName="idLibro">
+    
+                    <br>
+                    <br>
+                    
+                    <label>Fecha entrega</label>
+                    <input name="fechaEntrega" type="date" formControlName="fechaEntrega">
+    
+    
+                    <label>Vigente</label>
+                    <input name="vigente" type="checkbox" formControlName="mostrarVigente">
+    
+                    <br>
+                    <br>
+                    
+                    <label>Fecha devolución</label>
+                    <input name="fechaDevolucion" type="date" formControlName="fechaDevolucion">
+                </form>
+            }-->
+        }
+    
+               
+    </div>
+    
+
+
 </div>
+
+
+<div>
+
+    @switch (deptName) {
+        @case("USUARIO"){
+            <app-usuario [users] = "users"></app-usuario>
+        }
+        @case("LIBRO"){
+            <app-libro [libros] = "libros"></app-libro>
+        }
+        @case("ALQUILER"){
+            <app-alquiler [alquileres] = "alquileres"></app-alquiler>
+        }
+    }   
+
+</div>
+
+
+<!--
+<router-outlet ></router-outlet>
+-->

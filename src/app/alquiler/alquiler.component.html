@@ -25,7 +25,9 @@
             <tr>
                 <th>ID</th>
                 <th>ID_SOCIO</th>
+                <th>NOMBRE SOCIO</th>
                 <th>ID_LIBRO</th>
+                <th>TÍTULO LIBRO</th>
                 <th>FECHA</th>
                 <th>VIGENTE</th>
                 <th>FECHA_DEVOLUCIÓN</th>
@@ -33,13 +35,24 @@
         </thead>
         <tbody>
             @for(alqui of alquileres; track alqui.id){
-                <tr [class.select]="selectedAlquilerId==alqui.id" (click)="onSelect(alqui)">
+                <tr [class.select]="(alquilerSeleccionado | async)?.id ===alqui.id" (click)="onSelect(alqui)">
                     <td>{{alqui.id}}</td>
                     <td>{{alqui.idSocio}}</td>
+                    <td>{{alqui.nombreSocio}}</td>
                     <td>{{alqui.idLibro}}</td>
+                    <td>{{alqui.tituloLibro}}</td>
                     <td>{{alqui.fecha | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{alqui.vigente}}</td>
-                    <td>{{alqui.fechaDevolucion | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{alqui.mostrarVigente}}</td>
+                    @if(alqui.fecha <= alqui.fechaDevolucion){
+                        <td>{{alqui.fechaDevolucion | date: 'dd/MM/yyyy'}}</td>
+                    }@else{
+                        <td>--/--/----</td>
+                    }
+                    
+                    <!--
+                    <td><i class="fa-solid fa-pen" (click)="onEdit()"></i></td>
+                    <td><i class="fa-solid fa-trash" (click)="onDelete()"></i></td>
+                    -->
                 </tr>
             }
         </tbody>

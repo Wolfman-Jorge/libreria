@@ -1,6 +1,7 @@
 
 <div>
     <button (click)="logout()">Logout</button>
+    <a>Bienvenido {{nombre}}</a>
 </div>
 
 <h1>{{title}}</h1>
@@ -9,11 +10,17 @@
     <div class="btHoriz">
         <!-- Para que estos enlaces funcionen hay que importar RouterModule en el .ts padre del enlace
         navegar a usuario/crud -->
-        <a (click)="onNav('usuario')">Usuario</a>
+        <button (click)="onNav('usuario')">Socios</button>
         <!-- crea otro metodo y haz el enrutador desde el .ts router.navigateTo -->
-        <a (click)="onNav('libro')">Libros</a>
-        <a (click)="onNav('alquiler')">Alquileres</a>
+        <button (click)="onNav('libro')">Libros</button>
+        <button (click)="onNav('alquiler')">Alquileres</button>
     </div>
+    <div class="padre">
+        <div class="hijo">
+            <button (click)="onNav('addUsuario')">Nuevo Alquiler</button>
+        </div>
+    </div>
+
 </nav>
 
 <router-outlet></router-outlet>

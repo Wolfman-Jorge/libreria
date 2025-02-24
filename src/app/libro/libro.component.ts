@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Libro } from '../interface/libro';
 import { LibroService } from '../service/libro.service';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class LibroComponent implements OnInit{
 
   
-  libros: Libro[];
+  @Input() libros: Libro[] = [];
   //@Output() detailLibro = new EventEmitter<Libro>();
 
   //Se inyecta el servicio
@@ -46,10 +46,15 @@ export class LibroComponent implements OnInit{
 */
     //envia una copia del objeto
     this.libroService.selectedLibro = JSON.parse(JSON.stringify(libro));
+    this.libroService.seleccionarLibro(libro);
   }
 
   get selectedLibroId(){
     return this.libroService.selectedLibro?.id;
+  }
+
+  get libroSeleccionado(){
+    return this.libroService.libroSeleccionado$;
   }
 
 

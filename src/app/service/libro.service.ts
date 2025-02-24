@@ -1,21 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Libro } from '../interface/libro';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LibroService {
 
-  private libroUrl: string = 'http://localhost:8080/libreria/libros';
+  private libroUrl: string = 'http://localhost:8080/library/libros';
+  private url: string = "";
+  public libro: Libro = {} as Libro;
   public selectedLibro: Libro = {} as Libro;
   //Copia de los libros en memoria para actualizar el componente
-  libros: Array<Libro> = [];
+  libros: Libro[] = [];
+
+  private libroSeleccionadoSource = new BehaviorSubject<Libro>(null);
+  libroSeleccionado$ = this.libroSeleccionadoSource.asObservable();
 
   constructor(
     private http: HttpClient
   ) { }
+
+  seleccionarLibro(libro: Libro){
+    this.libroSeleccionadoSource.next(libro);
+  }
+
+  setLibros(libros: Libro[]):void{
+    this.libros = libros;
+  }
 
   //Devuelve una fuente de datos
   getLibros(): Observable<Libro[]>{
@@ -24,15 +37,8 @@ export class LibroService {
     if(this.libros.length === 0){
       return this.http.get<Libro[]>(this.libroUrl).pipe(
         tap(result=> {
-          result.forEach(libro =>{
-            if(libro.alquilado){
-              libro.alquilado = "Alquilado";
-            }else{
-              libro.alquilado = "Disponible";
-            }
-          },
-          this.libros = result
-        )
+          this.libros = result;
+          this.setDisponible(this.libros);
         })
       )
     } else {
@@ -41,34 +47,63 @@ export class LibroService {
     }      
   }
 
-  postLibro(libro: Libro): Observable<Libro>{
-    return this.http.post<Libro>(this.libroUrl, libro).pipe(
+  postLibro(titulo: string): Observable<Libro[]>{
+
+    this.libro.titulo = titulo;
+
+    return this.http.post<Libro[]>(this.libroUrl, this.libro).pipe(
       //acutaliza el array de libros que se muestra en el componente
       tap(result=> {
-        if(result.alquilado){
-          result.alquilado = "Alquilado";
-        }else{
-          result.alquilado = "Disponible";
-        }
-        this.libros.push(result)
+        this.libros = result;
+        this.setDisponible(this.libros);
       })
     );
   }
 
-  putLibro(libro: Libro): Observable<Libro>{
+  setDisponible(libros: Libro[]){
 
-    return this.http.put<Libro>(this.libroUrl, libro).pipe(
-      tap(result=> this.libros = this.libros.filter(f=> f.id === result.id))
+    libros.forEach(libro =>{
+      if(libro.alquilado){
+        libro.mostrarAlquilado = "Alquilado";
+      }else{
+        libro.mostrarAlquilado = "Disponible";
+      }
+    },
+    this.libros = libros
     );
   }
 
-  deleteLibro(libro: Libro): Observable<Libro>{
-    this.libroUrl = `${this.libroUrl}/${libro.id}`;
-    
-    return this.http.delete<Libro>(this.libroUrl).pipe(
-      //crea un array de usuarios que no coindiden con el eliminado
-      tap(result=> this.libros = this.libros.filter(f=> f.id !== result.id))
+  putLibro(libro: Libro): Observable<Libro[]>{
+
+    if(libro.mostrarAlquilado === "Alquilado"){
+      libro.alquilado = true;
+    }else{
+      libro.alquilado = false;
+    }
+
+    return this.http.put<Libro[]>(this.libroUrl, libro).pipe(
+      tap(result=>{
+        this.libros = result;
+        this.setDisponible(this.libros);
+      })
     );
+  }
+
+  deleteLibro(libro: Libro): Observable<Libro[]>{
+
+    this.url = `${this.libroUrl}/${libro.id}`;
+    
+    return this.http.delete<Libro[]>(this.url).pipe(
+      //crea un array de usuarios que no coindiden con el eliminado
+      tap(result=> {
+        this.libros = result;
+        this.setDisponible(this.libros);
+      })
+    );
+  }
+
+  unSelected(){
+    this.libroSeleccionadoSource.next(null);
   }
 
 }

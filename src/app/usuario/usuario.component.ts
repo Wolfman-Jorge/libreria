@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { User } from '../interface/user';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -12,13 +12,15 @@ import { RouterModule } from '@angular/router';
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
 })
-export class UsuarioComponent implements OnInit{
+export class UsuarioComponent implements OnInit, OnDestroy{
 
 
   //users = USUARIOS;
-  users: User[];
+  @Input() users: User[] = [];
   //selectedUser: User;
   //@Output() detailUser = new EventEmitter<User>();
+
+
 
   //Se inyecta el servicio
   constructor(private userService: UserService){}
@@ -26,6 +28,10 @@ export class UsuarioComponent implements OnInit{
   //permite inicializar el componente una vez ha recibido las propiedades de entrada
   ngOnInit(): void {
       this.getUser();
+  }
+
+  ngOnDestroy():void{
+    
   }
 
   getUser():void{
@@ -47,17 +53,20 @@ export class UsuarioComponent implements OnInit{
     this.detailUser.emit(user);
     console.log(user);
 */
+
     //envia una copia del objeto
     this.userService.selectedUser = JSON.parse(JSON.stringify(user));
+    this.userService.seleccionarUsuario(user);
   }
 
   get selectedUserId(){
     return this.userService.selectedUser?.id;
   }
 
-  onEdit() {
-    throw new Error('Method not implemented.');
+  get usuarioSeleccionado(){
+    return this.userService.usuarioSeleccionado$;
   }
+
 
 
 }

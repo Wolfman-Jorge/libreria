@@ -25,11 +25,14 @@
     </thead>
     <tbody>
         @for(user of users; track user.id){
-            <tr [class.select]="selectedUserId==user.id" (click)="onSelect(user)">
+            <tr [class.select]="(usuarioSeleccionado | async)?.id === user.id" (click)="onSelect(user)">
                 <td>{{ user.id }}</td>
                 <td>{{ user.nombre }}</td>
                 <td>{{ user.email }}</td>
+                <!--
                 <td><i class="fa-solid fa-pen" (click)="onEdit()"></i></td>
+                <td><i class="fa-solid fa-trash" (click)="onDelete()"></i></td>
+                -->
             </tr>
         }
     </tbody>

@@ -1,7 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, input, SimpleChange, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Alquiler } from '../interface/alquiler';
 import { AlquilerService } from '../service/alquiler.service';
 import { CommonModule } from '@angular/common';
+import { User } from '../interface/user';
+import { Libro } from '../interface/libro';
 
 
 @Component({
@@ -11,15 +13,18 @@ import { CommonModule } from '@angular/common';
   templateUrl: './alquiler.component.html',
   styleUrl: './alquiler.component.css'
 })
-export class AlquilerComponent {
+export class AlquilerComponent implements OnInit{
 
 
-  alquileres: Alquiler[];
-  @Output() detailAlquiler = new EventEmitter<Alquiler>();
+  @Input() alquileres: Alquiler[] = [];
   dateIni: string = '';
+  users: User[] = [];
+  libros: Libro[] = [];
 
-
-  constructor(private alquilerService: AlquilerService){}
+  constructor(
+    private alquilerService: AlquilerService
+  ){}
+ 
 
     //permite inicializar el componente una vez ha recibido las propiedades de entrada
     ngOnInit(): void {
@@ -35,10 +40,15 @@ export class AlquilerComponent {
       this.alquilerService.getAlquileres().subscribe({
         next: (alquiler)=>{
           this.alquileres = alquiler;
-          console.log(alquiler);
+          console.log("prueba de paso");
+         // console.log(this.alquileres[0].fecha);
         }
       });
   
+  }
+
+  onDateOrder(){
+
   }
   
   onSelect(alquiler: Alquiler){/*
@@ -48,10 +58,16 @@ export class AlquilerComponent {
 
     //envia una copia del objeto
   this.alquilerService.selectedAlquiler = JSON.parse(JSON.stringify(alquiler));
+  this.alquilerService.seleccionarAlquiler(alquiler);
   }
 
   get selectedAlquilerId(){
     return this.alquilerService.selectedAlquiler?.id;
   }
+
+  get alquilerSeleccionado(){
+    return this.alquilerService.alquilerSeleccionado$;
+  }
+
 
 }

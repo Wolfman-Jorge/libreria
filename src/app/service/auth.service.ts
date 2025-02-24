@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
+import { UserAdmin } from '../interface/userAdmin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-    private LOGIN_URL : string = 'http://localhost:8080/libreria/auth/login';
+    private LOGIN_URL : string = 'http://localhost:8080/library/auth/login';
+    private USER_URL : string = 'http://localhost:8080/library/auth/user';
     private tokenKey = 'authToken';
+    private url: string = "";
+    userAdmin: UserAdmin = {} as UserAdmin;
+    user: string = "";
 
     constructor(private httpClient: HttpClient,
                 private router: Router
@@ -23,10 +28,31 @@ export class AuthService {
                 if(response.token){
                     console.log(response.token);
                     this.setToken(response.token);
+                    
                 }
             })
         )
     }
+
+    getUser(token: any): Observable<UserAdmin>{
+        console.log(`token ${token}`);
+        return this.httpClient.get<UserAdmin>(this.USER_URL).pipe(
+            tap(result =>{
+                this.userAdmin= result;
+                console.log(`usuario ${this.userAdmin.username}`);
+            })
+        );
+    }
+
+    /*
+        getUser(token: string): Observable<string>{
+        this.url = `${this.LOGIN_URL}/${token}`;
+        return this.httpClient.get<string>(this.url).subscribe(
+
+        );
+        
+    }
+    */
 
     //para almacenar el token en local
     private setToken(token: string):void{
@@ -59,11 +85,13 @@ export class AuthService {
         //atob decodifica Base64, es de JS
         const payload = JSON.parse(atob(token.split('.')[1]));
 
-        //valida la la expiración
+        //valida la expiración
         //exp es el nombre de la variable que almacena la expiración en el token
         const exp = payload.exp * 1000;
         return Date.now() < exp;
     }
+
+
 
     //elimina el token del localStorage
     logout(): void{

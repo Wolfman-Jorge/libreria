@@ -1,19 +1,18 @@
 
 
 import { FormsModule } from '@angular/forms';
-import { FormularioComponent } from '../formulario/formulario.component';
 import { LibroService } from '../service/libro.service';
-import console from 'console';
 import { UserService } from '../service/user.service';
 import { AlquilerService } from '../service/alquiler.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormularioComponent } from '../formulario/formulario.component';
 
 @Component({
   selector: 'app-crud',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, FormularioComponent],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './crud.component.html',
   styleUrl: './crud.component.css'
 })
@@ -38,7 +37,6 @@ export class CrudComponent implements OnInit/*, AfterViewInit*/{
     private alquilerService: AlquilerService
   ){ 
 
-    
     //Accede a los parámetros de la Url
     this.route.params.subscribe(params =>{
       //params es un objeto que contiene los parámetros de la URL
@@ -68,6 +66,8 @@ export class CrudComponent implements OnInit/*, AfterViewInit*/{
     
     });
   }
+
+
   ngOnInit(): void {
   }
 /*
@@ -75,24 +75,23 @@ export class CrudComponent implements OnInit/*, AfterViewInit*/{
     console.log(this.idNombre);
   }
 */
-
-
+/*
 
   onCreate(): void{
 
     this.btName = 'create';
 
     switch(this.deptName){
-      case("usuario"):
+      case("USUARIO"):
         this.userService.postUser(this.userService.selectedUser)
           .subscribe(user=>
         {
-          console.log(this.userService.selectedUser.nombre);
+         console.log(this.userService.selectedUser.nombre);
         }
         );
         break;
 
-      case("libro"):
+      case("LIBRO"):
         this.libroService.postLibro(this.libroService.selectedLibro)
           .subscribe(libro=>
           {
@@ -101,7 +100,7 @@ export class CrudComponent implements OnInit/*, AfterViewInit*/{
           }
         );
         break;
-      case("alquiler"):
+      case("ALQUILER"):
         this.alquilerService.postAlquiler(this.alquilerService.selectedAlquiler)
           .subscribe(alquiler=>
           {
@@ -191,5 +190,5 @@ export class CrudComponent implements OnInit/*, AfterViewInit*/{
         console.error("No implementado", this.deptName);
     }
   }
-
+*/
 }

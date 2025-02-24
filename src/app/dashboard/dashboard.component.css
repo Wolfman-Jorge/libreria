@@ -6,8 +6,7 @@
 }
 
 h1{
-    font-size: 1.2em;
-    margin-bottom: 0;
+    margin-bottom: 20;
     text-align: center;
 }
 
@@ -17,33 +16,33 @@ h2{
     padding-top: 0;
 }
 
-nav a{
+nav button{
     padding: 10px 15px;
     color: black;
     text-decoration: none;
     margin: 10px;
     display: inline-block;
     background-color: #cd966c;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 /*
 nav a:visited, a:link{
     color: white;
 }*/
 
-nav a:hover{
+nav button:hover{
     cursor: pointer;
     color: white;
     background-color: #9a5833;
 }
 
-nav a.active{
-    color:aqua;
-}
+nav button:active {
+    background-color: #7c3b1a;
+  }
 
 .btHoriz{
     display: block;
-    width: 500px;
+    width: 600px;
     margin: auto;
     text-align: center;
 }
@@ -62,4 +61,19 @@ li:hover{
 
 button{
     margin-left: 70px;
+    min-width: 150px;
+    border-radius: 5px;
+}
+
+div .padre{
+    width: 33.33%;
+
+}
+
+div .hijo{
+    text-align: center;
+}
+
+a{
+    margin-left: 10px;
 }

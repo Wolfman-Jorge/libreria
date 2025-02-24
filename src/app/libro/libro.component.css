@@ -26,15 +26,20 @@ ul{
     list-style-type: none;
 }
 
+table{
+    width: 90%;
+    margin: auto;
+    letter-spacing: 0.5px;
+}
+
 td{
-    cursor: pointer;
     position: relative;
-    left: 0;
     background-color: #cd966c;
     margin: .5em;
     height: 1.6em;
-    padding: 0 50px;
+    padding: 0 10px 0 10px;
     border-bottom: 2px solid white;
+    cursor: pointer;
 }
 
 tr:hover td{
@@ -48,8 +53,7 @@ tr.select td{
     color: white;
 }
 
-table{
-    margin: 70px auto;
-    border-collapse: collapse;
-    letter-spacing: 0.5px;
+.fa-solid{
+    cursor: pointer;
 }
+

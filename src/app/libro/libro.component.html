@@ -22,16 +22,20 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>NOMBRE</th>
+            <th>TÍTULO</th>
             <th>ALQUILADO</th>            
         </tr>
     </thead>
     <tbody>
         @for(libro of libros; track libro.id){
-            <tr [class.select]="selectedLibroId==libro.id" (click)="onSelect(libro)">
+            <tr [class.select]="(libroSeleccionado | async)?.id ===libro.id" (click)="onSelect(libro)">
                 <td>{{libro.id}}</td>
                 <td>{{libro.titulo}}</td>
-                <td>{{libro.alquilado}}</td>
+                <td>{{libro.mostrarAlquilado}}</td>
+                <!--
+                <td><i class="fa-solid fa-pen" (click)="onEdit()"></i></td>
+                <td><i class="fa-solid fa-trash" (click)="onDelete()"></i></td>
+                -->
             </tr>
         }
     </tbody>

@@ -2,6 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 
+//Hay que añadirlo en los providers (app.config.ts)
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   //debugger;
 

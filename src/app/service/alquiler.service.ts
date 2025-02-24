@@ -1,7 +1,7 @@
 import { Injectable, ViewContainerRef } from '@angular/core';
 import { Alquiler } from '../interface/alquiler';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap, of, BehaviorSubject } from 'rxjs';
+import { Observable, tap, of, BehaviorSubject, delay } from 'rxjs';
 import { LibroService } from './libro.service';
 import { UserService } from './user.service';
 import { User } from '../interface/user';
@@ -12,7 +12,7 @@ import { Libro } from '../interface/libro';
 })
 export class AlquilerService {
   
-  private alquilerUrl: string = 'http://localhost:8080/libreria/alquileres';
+  private alquilerUrl: string = 'http://localhost:8080/library/alquileres';
   public alquiler: Alquiler = {} as Alquiler;
   public selectedAlquiler: Alquiler = {} as Alquiler;
   //Copia de los alquileres en memoria para actualizar el componente sin refrescar la página
@@ -22,7 +22,7 @@ export class AlquilerService {
   private url: string = "";
 
   private alquilerSeleccionadoSource = new BehaviorSubject<Alquiler>(null);
-  alquilerSeleccionado = this.alquilerSeleccionadoSource.asObservable();
+  alquilerSeleccionado$ = this.alquilerSeleccionadoSource.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -36,7 +36,9 @@ export class AlquilerService {
 
  // constructor(private viewContainer: ViewContainerRef) {}  loadContent() {    this.viewContainer.createComponent(LeafContent);  }
 
-
+  setAlquileres(alquileres: Alquiler[]):void{
+    this.alquileres = alquileres;
+  }
 
   getUser():void{
     /*Se utiliza el servicio para acceder al get que accede a datos
@@ -152,37 +154,31 @@ export class AlquilerService {
 
   }
   
-  putAlquiler(alquiler: Alquiler): Observable<Alquiler[]>{
+  putAlquiler(alquiler: Alquiler): Observable<any[]>{
+
+    return this.http.put<any[]>(this.alquilerUrl, alquiler)
+    .pipe(
+      tap(result=>{
+        console.log("dentro de result");
+        this.libroService.setLibros(result.filter(item=> item.type === 'Libro'));
+        this.alquileres = result.filter(item=> item.type === 'Alquiler');
+        this.setSocioLibro(this.alquileres);
+      })
+    );
 
     /*
-    this.alquilerUrl = `${this.alquilerUrl}/${alquiler.id}`;
-
-    this.http.put<Alquiler>(this.alquilerUrl, null).pipe(
-      tap(result=> alert(result))
-    );*/
-/*
-    this.alquiler.fecha = (new Date(fechaEntrega)).getTime();
-    this.alquiler.vigente = vigente;
-    this.alquiler.fechaDevolucion = (new Date(fechaDevolucion)).getTime();
-
-
-    if(alquiler.mostrarVigente === "Vigente"){
-      alquiler.vigente = true;
-    }else{
-      alquiler.vigente = false;
-    }
-*/
-    return this.http.put<Alquiler[]>(this.alquilerUrl, alquiler).pipe(
-      //tap(result=> this.alquileres = this.alquileres.filter(f=> f.id === result.id))
+    .pipe(
       tap(result=> {
-        /*
-          result.fechaMostrar = (new Date(result.fecha)).toISOString().split('T')[0];  
-          result.fechaDevolucionMostrar = (new Date(result.fechaDevolucion)).toISOString().split('T')[0];
-          */
+        
+          //result.fechaMostrar = (new Date(result.fecha)).toISOString().split('T')[0];  
+          //result.fechaDevolucionMostrar = (new Date(result.fechaDevolucion)).toISOString().split('T')[0];
+          
           this.alquileres = result;
           this.setSocioLibro(this.alquileres);
       })
     );
+*/
+
   }
 
   deleteAlquiler(alquiler: Alquiler): Observable<Alquiler[]>{
@@ -215,25 +211,34 @@ export class AlquilerService {
   }
 */
 
-postAlquiler(idSocio: number, idLibro: number): Observable<Alquiler>{
+  postAlquiler(idSocio: number, idLibro: number): Observable<any[]>{
 
-  this.alquiler.idSocio = idSocio;
-  this.alquiler.idLibro = idLibro;
+    this.alquiler.idSocio = idSocio;
+    this.alquiler.idLibro = idLibro;
 
-  console.log("entrando en el post");
+    console.log("entrando en el post");
 
-  return this.http.post<Alquiler>(this.alquilerUrl, this.alquiler).pipe(
-    tap(result=>{
-      console.log("dentro del tap");
-      this.alquileres.push(result);
-      this.setSocioLibro(this.alquileres);
-    })
-  );
-}
+    return this.http.post<any[]>(this.alquilerUrl, this.alquiler)
+    /*
+    .subscribe(result=>{
+      this.alquileres = result.filter(item=> item.type === 'Alquiler');
+      this.libroService.setLibros(result.filter(item=> item.type === 'Libro'));
+      console.log("de vuelta en finish");
+    });
+    */
+    .pipe(
+      tap(result=>{
+        console.log("dentro de result");
+        this.libroService.setLibros(result.filter(item=> item.type === 'Libro'));
+        this.alquileres = result.filter(item=> item.type === 'Alquiler');
+        this.setSocioLibro(this.alquileres);
+      })
+    );
 
+  }
 
   unSelected(){
-    this.selectedAlquiler = null;
+    this.alquilerSeleccionadoSource.next(null);
   }
 
 }
@@ -256,3 +261,9 @@ postAlquiler(idSocio: number, idLibro: number): Observable<Alquiler>{
 
 //modificaciones en la lógica de eliminación de registros
 //implementar alertas y confirmaciones antes de eliminar registros
+
+//repintar cdr.mackForCheck() es un servicio
+//modificación del servicio login para obtener los datos del usuario admin registrado
+//modificar el login en el back para que devuelva los datos del usuario registrado
+
+//foxit reader lector pdf

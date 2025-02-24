@@ -1,3 +1,121 @@
 label{
     margin: 20px;
 }
+
+button{
+    display:inline-block;
+    min-width: 150px;
+    padding: 10px 15px;
+    color: black;
+    text-decoration: none;
+    margin: 10px;
+    background-color: #cd966c;
+    border-radius: 5px;
+}
+
+button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #9a5833;
+}
+
+button:disabled{
+    background-color: #ccc;
+    color: black;
+    cursor:auto;
+}
+
+label{
+    margin-top: 4px;
+    margin-right: 10px;
+}
+
+.verti{
+    display: flex;
+    border: 5px solid;
+    margin:60px;
+}
+
+.titulo{
+    text-align: center;
+    margin: 10px 10px;
+}
+/*
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-flow: column;
+}
+
+.formulario{
+    position: relative;
+    margin: 12px 0;
+}
+
+.formulario .form-label{
+    position: absolute;
+    top: 9px;
+    left: 0;
+    font-size: 18px;
+    color: #acacac;
+    padding: 0 10px;
+    pointer-events: none;
+    transition: 0.15s all ease;
+}
+
+.formulario input:focus + .form-label,
+.formulario input:not(:placeholder-shown) +
+.formulario{
+    transform: translate(5px, -22px);
+    background-color: white;
+    font-size: 14px;
+    color: #020202;
+}
+
+.formulario input{
+    padding: 8px 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: #acacac solid 2px;
+    background-color: transparent;
+    color: #050505;
+    transition: 0.15s all ease;
+}
+
+.formulario input:focus{
+    border-color: black;
+}
+
+.formulario input::placeholder{
+    color: transparent;
+}
+*/
+
+
+.formulario{
+    cursor: pointer;
+    display: inline-block;
+    align-content: center;
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+.name{
+    display: block;
+    margin: 5px;
+
+}
+
+
+li{
+    list-style-type:none;
+}
+
+input{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;  
+}
+

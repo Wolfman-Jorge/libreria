@@ -1,12 +1,8 @@
 
-<div *ngIf="user">
+<h2>SELECCIONE UN SOCIO</h2>
 
-    <!--Para usar pipes hay que importar CommonModule-->
-    <h2>{{user.nombre | uppercase}} Details</h2>
-    <div><span>id: </span>{{user.id}}</div>
-    <div>
-        <label>name:
-            <input [(ngModel)]="user.nombre" placeholder="name" />
-        </label>
-    </div>
+<router-outlet></router-outlet>
+
+<div>
+    <button (click)="onSiguiente('addLibro')">Siguiente</button>
 </div>
