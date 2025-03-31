@@ -15,7 +15,6 @@ export class LibroComponent implements OnInit{
 
   
   @Input() libros: Libro[] = [];
-  //@Output() detailLibro = new EventEmitter<Libro>();
 
   //Se inyecta el servicio
   constructor(private libroService: LibroService){}
@@ -26,11 +25,7 @@ export class LibroComponent implements OnInit{
   }
 
   getLibros():void{
-    /*Se utiliza el servicio para acceder al get que accede a datos
-    this.libroService.getLibro()
-      .subscribe(libro => this.libro = libro); //Esto funciona de forma asíncrona
-      //subscribe "convierte" el array que se recibe de forma asíncrona y lo almacena en la propiedad libros[]
-  */
+
       this.libroService.getLibros().subscribe({
         next: (libro)=>{
           this.libros = libro;
@@ -40,10 +35,7 @@ export class LibroComponent implements OnInit{
   
   }
   
-  onSelect(libro: Libro){/*
-    this.detailUser.emit(user);
-    console.log(user);
-*/
+  onSelect(libro: Libro){
     //envia una copia del objeto
     this.libroService.selectedLibro = JSON.parse(JSON.stringify(libro));
     this.libroService.seleccionarLibro(libro);

@@ -11,8 +11,7 @@ import { RouterModule, RouterOutlet, Router } from '@angular/router';
 })
 export class AppComponent {
   
-  //EL ERROR DE CORS SE CORRIGE AÑADIENDO EN EL REST CONTROLLER:
-  // @CrossOrigin(origins={"http://localhost:4200"})
+
 
   title = 'Libreria';
 

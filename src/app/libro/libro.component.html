@@ -1,22 +1,5 @@
 
 
-<!--
-<div *ngIf="libros">
-    <div class="head">
-        Id
-        Nombre
-        Alquilado
-    </div>
-
-    <div *ngFor="let libro of libros">
-        <ul>
-            <li [class.selected]="selectedLibroId==libro.id" (click)="onSelect(libro)" >{{libro.id}} {{libro.titulo}} {{libro.alquilado}}</li>
-        </ul>
-    </div>
-
-</div>
--->
-
 
 <table>
     <thead>
@@ -32,10 +15,6 @@
                 <td>{{libro.id}}</td>
                 <td>{{libro.titulo}}</td>
                 <td>{{libro.mostrarAlquilado}}</td>
-                <!--
-                <td><i class="fa-solid fa-pen" (click)="onEdit()"></i></td>
-                <td><i class="fa-solid fa-trash" (click)="onDelete()"></i></td>
-                -->
             </tr>
         }
     </tbody>

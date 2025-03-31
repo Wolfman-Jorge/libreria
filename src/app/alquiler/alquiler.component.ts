@@ -32,16 +32,12 @@ export class AlquilerComponent implements OnInit{
   }
 
   getAlquileres():void{
-    /*Se utiliza el servicio para acceder al get que accede a datos
-    this.alquilerService.getAlquiler()
-      .subscribe(alquiler => this.alquiler = alquiler); //Esto funciona de forma asíncrona
-      //subscribe "convierte" el array que se recibe de forma asíncrona y lo almacena en la propiedad alquileres[]
-  */
+
       this.alquilerService.getAlquileres().subscribe({
         next: (alquiler)=>{
           this.alquileres = alquiler;
           console.log("prueba de paso");
-         // console.log(this.alquileres[0].fecha);
+
         }
       });
   
@@ -51,10 +47,7 @@ export class AlquilerComponent implements OnInit{
 
   }
   
-  onSelect(alquiler: Alquiler){/*
-    this.detailAlquiler.emit(alquiler);
-    console.log(alquiler);
-*/
+  onSelect(alquiler: Alquiler){
 
     //envia una copia del objeto
   this.alquilerService.selectedAlquiler = JSON.parse(JSON.stringify(alquiler));

@@ -1,19 +1,5 @@
 
-.root{
-    font-family: Arial, Helvetica, sans-serif;
-}
 
-h1{
-    font-size: 1.2em;
-    margin-bottom: 0;
-    text-align: center;
-}
-
-h2{
-    font-size: 2em;
-    margin-top: 0;
-    padding-top: 0;
-}
 
 nav a{
     padding: 10px 15px;
@@ -24,10 +10,6 @@ nav a{
     background-color: #cd966c;
     border-radius: 4px;
 }
-/*
-nav a:visited, a:link{
-    color: white;
-}*/
 
 nav a:hover{
     cursor: pointer;

@@ -55,24 +55,12 @@ export class FormularioComponent implements OnInit {
       
     });
 
-
-
-
-
     this.formUser = this.formBuilder.group({
       nombre: ['', Validators.required],
       email: ['', Validators.required]
     });
 
-/*
-    // Escuchar cambios en los campos del formulario
-    this.formUser.valueChanges.subscribe(() => {
-      // Si los valores cambian por escritura manual
-      if (this.formUser.touched) {
-        this.manualInput = true;
-      }
-    });
-*/
+
     this.formLibro = this.formBuilder.group({
       titulo: ['', Validators.required],
       mostrarAlquilado: ['']
@@ -81,11 +69,7 @@ export class FormularioComponent implements OnInit {
     this.formAlquiler = this.formBuilder.group({
       socio: ['', Validators.required],
       libro: ['', Validators.required]
-      /*
-      fechaEntrega: [''],
-      mostrarVigente: [''],
-      fechaDevolucion: ['']
-      */
+   
     });
     
     switch(this.deptName){
@@ -108,8 +92,6 @@ export class FormularioComponent implements OnInit {
         break;
     }  
   }
-
-
 
   ngOnInit(){
     
@@ -147,13 +129,7 @@ export class FormularioComponent implements OnInit {
         this.formAlquiler.patchValue({
           socio: alquiler.nombreSocio,
           libro: alquiler.tituloLibro
-          /*
-          idSocio: alquiler.idSocio,
-          idLibro: alquiler.idLibro,
-          fechaEntrega: alquiler.fecha,
-          mostrarVigente: alquiler.mostrarVigente,
-          fechaDevolucion: alquiler.fechaDevolucion
-          */
+
         });
       }
     });
@@ -244,16 +220,7 @@ export class FormularioComponent implements OnInit {
            }
           });
         break;
-/*
-      case("ALQUILER"):      
-        this.alquilerService.postAlquiler(this.formAlquiler.get("idSocio").value, this.formAlquiler.get("idLibro").value)
-          .subscribe({
-           next: (alquiler)=>{
-            this.alquileres = alquiler;
-           } 
-          });
-        break;
-*/
+
       default:
         console.error("No implementado", this.deptName);
     }
@@ -293,21 +260,16 @@ export class FormularioComponent implements OnInit {
         break;
       case("ALQUILER"):
 
-      /*
-        this.selectedAlquiler.idSocio = this.formAlquiler.get("idSocio").value;
-        this.selectedAlquiler.idLibro = this.formAlquiler.get("idLibro").value;
-        this.selectedAlquiler.fecha = this.formAlquiler.get("fechaEntrega").value;
-        this.selectedAlquiler.mostrarVigente = this.formAlquiler.get("mostrarVigente").value;
-        this.selectedAlquiler.fechaDevolucion = this.formAlquiler.get("fechaDevolucion").value;
-        */
+        if(this.alquilerService.selectedAlquiler.vigente){
+          this.alquilerService.putAlquiler(this.alquilerService.selectedAlquiler)
+          .subscribe(()=>{
+            this.getAlquileres();
+            });
+        } else {
+          alert('No se puede devolver un libro con alquiler finalizado'); 
+        }
 
-        this.alquilerService.putAlquiler(this.alquilerService.selectedAlquiler)
-        .subscribe({
-            //next: (alquiler)=>{
-              //this.alquileres = alquiler.filter(item=> item.type === 'Alquiler');
-              //this.alquileres = alquiler;
-            //}
-          });
+
         break;
 
       default:
@@ -417,8 +379,4 @@ export class FormularioComponent implements OnInit {
     this.manualInput = false;
   }
 
-  //estudio de formularios reactivos
-  //buscar input tipe date que devuelve
-
-  // Al hacer la query de alquileres hacer los joins de usuario y libro sobre la tabla de alquileres sin modificar el back
 }

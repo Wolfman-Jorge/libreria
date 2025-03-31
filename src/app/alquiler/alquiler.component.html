@@ -1,24 +1,5 @@
 
-<!--
-<div *ngIf="alquileres">
-    <div class="head">
-        Id
-        IdSocio
-        IdLibro
-        Fecha
-        vigente
-        fechaDevolucion
-    </div>
 
-    <div *ngFor="let alquiler of alquileres">
-        <ul>
-            <li [class.selected]="selectedAlquilerId==alquiler.id" (click)="onSelect(alquiler)" >
-                {{alquiler.id}} {{alquiler.idSocio}} {{alquiler.idLibro}} {{alquiler.fecha}} {{alquiler.vigente}} {{alquiler.fechaDevolucion}}</li>
-        </ul>
-    </div>
-
-</div>
--->
 <div>
     <table>
         <thead>
@@ -48,11 +29,7 @@
                     }@else{
                         <td>--/--/----</td>
                     }
-                    
-                    <!--
-                    <td><i class="fa-solid fa-pen" (click)="onEdit()"></i></td>
-                    <td><i class="fa-solid fa-trash" (click)="onDelete()"></i></td>
-                    -->
+   
                 </tr>
             }
         </tbody>

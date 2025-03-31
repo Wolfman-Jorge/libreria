@@ -1,18 +1,3 @@
-<!--
-<div *ngIf="users">
-    <div class="head">
-        Id
-        Nombre
-    </div>
-
-    <div *ngFor="let user of users">
-        <ul>
-            <li [class.selected]="selectedUserId==user.id" (click)="onSelect(user)" >{{user.id}} {{user.nombre}}</li>
-        </ul>
-    </div>
-
-</div>
--->
 
 
 <table>
@@ -29,10 +14,6 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.nombre }}</td>
                 <td>{{ user.email }}</td>
-                <!--
-                <td><i class="fa-solid fa-pen" (click)="onEdit()"></i></td>
-                <td><i class="fa-solid fa-trash" (click)="onDelete()"></i></td>
-                -->
             </tr>
         }
     </tbody>

@@ -21,20 +21,6 @@ export class UserService {
   private usuarioSeleccionadoSource = new BehaviorSubject<User>(null);
   usuarioSeleccionado$ = this.usuarioSeleccionadoSource.asObservable();
 
-/*
-  private userDelete = new BehaviorSubject<User[]>(null);
-
-  deleteUserPrueba(user: User): Observable<User>{
-    this.socioUrl = `${this.socioUrl}/${user.id}`;
-    
-    return this.http.delete<User>(this.socioUrl).pipe(
-      //crea un array de usuarios que no coindiden con el eliminado
-      tap(result=> {
-        this.users = this.users.filter(f=> f.id !== result.id);
-      }) 
-    );
-  }
-*/
 
 getUserPrueba(){
   return this.users;
@@ -50,19 +36,6 @@ getUserPrueba(){
   }
 
 
-
-
-  /*
-  deleteUser(user: User): Observable<User[]>{
-    this.socioUrl = `${this.socioUrl}/${user.id}`;
-    
-    return this.http.delete<User[]>(this.socioUrl).pipe(
-      //crea un array de usuarios que no coindiden con el eliminado
-      tap(result=> this.users = result
-      )
-      );
-  }
-*/
   putUser(user: User): Observable<User[]>{
 
     return this.http.put<User[]>(this.socioUrl, user).pipe(

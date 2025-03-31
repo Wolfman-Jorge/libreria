@@ -1,26 +1,29 @@
 
 <div>
-    <button (click)="logout()">Logout</button>
-    <a>Bienvenido {{nombre}}</a>
-</div>
-
-<h1>{{title}}</h1>
-<!-- Esto no debería pintarlo aquí -->
-<nav>
-    <div class="btHoriz">
-        <!-- Para que estos enlaces funcionen hay que importar RouterModule en el .ts padre del enlace
-        navegar a usuario/crud -->
-        <button (click)="onNav('usuario')">Socios</button>
-        <!-- crea otro metodo y haz el enrutador desde el .ts router.navigateTo -->
-        <button (click)="onNav('libro')">Libros</button>
-        <button (click)="onNav('alquiler')">Alquileres</button>
+    <div>
+        <button (click)="logout()">Logout</button>
+        <a>Hola {{nombre}}</a>
     </div>
-    <div class="padre">
+    
+    <h1>{{title}}</h1>
+    <img class="logo" src="/assets/resources/logo_library.jpg" alt="logo" width="100" height="100">
+    <nav>
+        
+        <div class="btHoriz">
+            <!-- Para que estos enlaces funcionen hay que importar RouterModule en el .ts padre del enlace
+            navegar a usuario/crud -->
+            <button (click)="onNav('usuario')">Socios</button>
+            <!-- crea otro metodo y haz el enrutador desde el .ts router.navigateTo -->
+            <button (click)="onNav('libro')">Libros</button>
+            <button (click)="onNav('alquiler')">Alquileres</button>
+        </div>
+        
         <div class="hijo">
             <button (click)="onNav('addUsuario')">Nuevo Alquiler</button>
-        </div>
-    </div>
-
-</nav>
+        </div>    
+        
+    </nav>
+    
+</div>
 
 <router-outlet></router-outlet>

@@ -44,15 +44,6 @@ export class AuthService {
         );
     }
 
-    /*
-        getUser(token: string): Observable<string>{
-        this.url = `${this.LOGIN_URL}/${token}`;
-        return this.httpClient.get<string>(this.url).subscribe(
-
-        );
-        
-    }
-    */
 
     //para almacenar el token en local
     private setToken(token: string):void{

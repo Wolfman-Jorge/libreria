@@ -1,35 +1,13 @@
 
 
-
-li{
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #cd966c;
-    margin: .5em;
-    height: 1.6em;
-    border-radius: 4px;
-}
-
-li:hover{
-    color: white;
-    background-color: #9a5833;
-    left: .1em;
-}
-
-li.selected{
-    background-color: #7c3b1a;
-    color: white;
-}
-
-ul{
-    list-style-type: none;
-}
-
 table{
     width: 90%;
     margin: auto;
     letter-spacing: 0.5px;
+}
+
+th{
+    font-family: "Merriweather", serif !important;
 }
 
 td{
@@ -53,7 +31,4 @@ tr.select td{
     color: white;
 }
 
-.fa-solid{
-    cursor: pointer;
-}
 

@@ -1,22 +1,15 @@
 
 
-
-.root{
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 h1{
     margin-bottom: 20;
     text-align: center;
+    font-family: "Merriweather", serif !important;
 }
 
-h2{
-    font-size: 2em;
-    margin-top: 0;
-    padding-top: 0;
-}
 
 nav button{
+    font-family: 'Roboto', sans-serif !important;
+    letter-spacing: 0.5px;
     padding: 10px 15px;
     color: black;
     text-decoration: none;
@@ -25,10 +18,7 @@ nav button{
     background-color: #cd966c;
     border-radius: 5px;
 }
-/*
-nav a:visited, a:link{
-    color: white;
-}*/
+
 
 nav button:hover{
     cursor: pointer;
@@ -51,23 +41,17 @@ nav button:active {
     margin-left: 40px;
 }
 
-li{
+button{
+    background-color: #ccc;
+    margin-left: 70px;
+    padding: 10px 15px;
+    min-width: 150px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-li:hover{
-    color: gray;
-}
-
-button{
-    margin-left: 70px;
-    min-width: 150px;
-    border-radius: 5px;
-}
-
-div .padre{
-    width: 33.33%;
-
+button:hover{
+    background-color: #b4b0b0;
 }
 
 div .hijo{
@@ -76,4 +60,10 @@ div .hijo{
 
 a{
     margin-left: 10px;
+}
+
+.logo{
+    position: relative;
+    left: 80%;
+    margin-top: -25%;
 }

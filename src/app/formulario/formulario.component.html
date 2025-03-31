@@ -21,10 +21,7 @@
                         <label>Nombre</label>
                     </div>
                     <input name="userName" type="text" formControlName="nombre" (input)="onManualInput()" >
-                        <!--
-                        <label class="form-label">Nombre</label>
-                        -->
-                  
+                             
                     <br>
                     <br>
                     
@@ -32,10 +29,7 @@
                         <label>Email</label>
                     </div>
                     <input name="email" type="text" formControlName="email" (input)="onManualInput()">
-                        <!--
-                        <label class="form-label">E-mail</label>
-                    -->
-
+         
                 </form>
             }
             @case("LIBRO"){
@@ -49,17 +43,11 @@
     
                     <br>
                     <br>
-                    <!--
-                    <label>Alquilado</label>
-                    <input name="alquilado" type="checkbox" formControlName="mostrarAlquilado">
-                    -->
-                    
+                         
                     <div>
                         <label>Alquilado</label>
                     </div>
-                    <!--
-                    <input type="checkbox">
-                    -->               
+                 
                     <input id="alquiladoDisponible" type="text" name="alquilado"  formControlName="mostrarAlquilado" readonly>
                 
                 </form>
@@ -83,32 +71,6 @@
                 </form>
             }
 
-<!--
-            @case("ALQUILER"){
-                <form [formGroup]="formAlquiler" (ngsubmit)="onSubmit()" class="name">
-                    <label>IdSocio</label>
-                    <input name="socio" type="number" formControlName="idSocio">
-    
-                    <label>IdLibro</label>
-                    <input name="libro" type="number" formControlName="idLibro">
-    
-                    <br>
-                    <br>
-                    
-                    <label>Fecha entrega</label>
-                    <input name="fechaEntrega" type="date" formControlName="fechaEntrega">
-    
-    
-                    <label>Vigente</label>
-                    <input name="vigente" type="checkbox" formControlName="mostrarVigente">
-    
-                    <br>
-                    <br>
-                    
-                    <label>Fecha devolución</label>
-                    <input name="fechaDevolucion" type="date" formControlName="fechaDevolucion">
-                </form>
-            }-->
         }
     
                
@@ -134,8 +96,3 @@
     }   
 
 </div>
-
-
-<!--
-<router-outlet ></router-outlet>
--->

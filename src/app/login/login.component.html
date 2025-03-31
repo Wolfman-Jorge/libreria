@@ -1,44 +1,50 @@
 
 <div class="div-raiz">
-    <h2>Login</h2>
+    
 
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="login">
+        <h2>Login</h2>
+        <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-        <div>
-            <label for="username">
-                Nombre:
-            </label>
-        </div>
-        <div class="form-group">
-            <input id="username" type="text" formControlName="username">
-        </div>
-        <div class="alert" [hidden]="myForm.get('username').valid">
-            Dato requerido
-        </div>
+            <div>
+                <label for="username">
+                    Nombre:
+                </label>
+            </div>
+            <div class="form-group">
+                <input id="username" type="text" formControlName="username">
+            </div>
+            <div class="alert" [hidden]="myForm.get('username').valid">
+                Dato requerido
+            </div>
+    
+    
+            <div>
+                <label for="password">
+                    Contraseña:
+                </label>
+            </div>
+            <div class="form-group">
+                <input id="password" [type]="changeType? 'password' : 'text'" formControlName="password">
+    
+                <span class="eyeicon" (click)="onMostrar()">
+                    <i [ngClass]="visible? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+                </span>
+            </div>
+    
+            <div class="alert" [hidden]="myForm.get('password').valid">
+                Dato requerido
+            </div>
+    
+            <div>
+                <button (click)="login()" class="button" type="submit" [disabled]="!myForm.valid"> Enviar </button>
+            </div>
+    
+        </form>
 
+    </div>
 
-        <div>
-            <label for="password">
-                Contraseña:
-            </label>
-        </div>
-        <div class="form-group">
-            <input id="password" [type]="changeType? 'password' : 'text'" formControlName="password">
-
-            <span class="eyeicon" (click)="onMostrar()">
-                <i [ngClass]="visible? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
-            </span>
-        </div>
-
-        <div class="alert" [hidden]="myForm.get('password').valid">
-            Dato requerido
-        </div>
-
-        <div>
-            <button (click)="login()" class="button" type="submit" [disabled]="!myForm.valid"> Enviar </button>
-        </div>
-
-    </form>
+   
 
 
 </div>

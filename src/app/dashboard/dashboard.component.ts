@@ -17,7 +17,7 @@ import { UserAdmin } from '../interface/userAdmin';
 })
 export class DashboardComponent implements OnInit {
 
-  title = 'BIBLIOTECA';
+  title = 'LIBRARY';
   deptName = '';
   userAdmin: UserAdmin = {} as UserAdmin;
   nombre: string = "";
@@ -87,7 +87,3 @@ export class DashboardComponent implements OnInit {
   }
 
 }
-
-
-//investigar docker y tomcat
-//como desplegar la app en la nube

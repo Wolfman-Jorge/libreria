@@ -1,6 +1,33 @@
 
+.div-raiz{
+    margin-top: -25px;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/assets/resources/portada_login.jpg');
+    background-size: cover;
+    
+}
+
+.login{
+    position: relative;
+    top: 25%;
+    left: 60%;
+    --w: 400px;
+    --h: 450px;
+    
+    --gradient: linear-gradient(#906a26, #a88033);
+
+
+    width: var(--w);
+    height: var(--h);
+    background: var(--gradient);
+    border-radius: 5px;
+}
+
 h2{
-    color: #9a5833;
+    font-family: "Merriweather", serif !important;
+    text-align: center;
+    padding-top: 20px;
 }
 
 div{
@@ -11,9 +38,7 @@ input{
     border-radius: 5px;
 }
 
-label{
-    color: grey;
-}
+
 
 button{
     margin-top: 20px;
@@ -27,9 +52,23 @@ button:hover{
     background-color: #cd966c;
 }
 
+button:disabled{
+    background-color: #ccc;
+    color: black;
+    cursor:auto;
+}
+
+button:active {
+    background-color: #7c3b1a;
+  }
+
 .alert{
-    color: red;
+    color: rgb(255, 255, 255);
     font-size: 12px;
+}
+
+.form{
+    margin-left: 25px;
 }
 
 .form-group{

@@ -34,42 +34,11 @@ export class LoginComponent implements OnInit {
       password:['', Validators.required]
     });
   }
-/*
-  login(): void{
-  
-    this.authService.login(this.myForm.get("username").value, this.myForm.get("password").value).subscribe({
-      next: () => this.router.navigate(["/dashboard"]),
-      error: (err) => console.error("Error de login ", err)
-    });
-  }
-*/
-/*
-login(): void{
-    
-  //recupera los datos del formulario reactivo
-  /*
-  this.username = this.myForm.get("username")?.value,
-  this.password = this.myForm.get("password")?.value
-*/
-/*
-  this.authService.login(this.myForm.get("username").value, this.myForm.get("password").value).subscribe({
-    next: (data)=>{
-      this.getUser(this.authService.getToken());
-      console.log(`dentro de next ${this.userAdmin.username}`);
-      this.router.navigate(["/dashboard", this.userAdmin.username]);
-    },
-    error: (err) => console.error("Error de login ", err)
-  });
-}
-*/
+
 
 login(): void{
     
-  //recupera los datos del formulario reactivo
-  /*
-  this.username = this.myForm.get("username")?.value,
-  this.password = this.myForm.get("password")?.value
-*/
+
 
   this.authService.login(this.myForm.get("username").value, this.myForm.get("password").value).subscribe({
     next: (data)=>{
@@ -95,16 +64,7 @@ getUser(data: any): void{
     this.userAdmin = result;
     console.log(`El usuario getUser ${this.userAdmin.username}`);
   });
-  
-  
-  /*
-          this.userService.postUser(this.formUser.get("nombre").value, this.formUser.get("email").value)
-        .subscribe({
-          next: (user)=>{
-            this.users = user;
-          }
-        });
-  */
+
 }
 
   onMostrar(){

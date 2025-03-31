@@ -1,13 +1,10 @@
-label{
-    margin: 20px;
-}
 
 button{
+    font-family: 'Roboto', sans-serif;
     display:inline-block;
     min-width: 150px;
     padding: 10px 15px;
     color: black;
-    text-decoration: none;
     margin: 10px;
     background-color: #cd966c;
     border-radius: 5px;
@@ -25,14 +22,19 @@ button:disabled{
     cursor:auto;
 }
 
+button:active {
+    background-color: #7c3b1a;
+  }
+
 label{
+    margin: 20px;
     margin-top: 4px;
     margin-right: 10px;
 }
 
 .verti{
     display: flex;
-    border: 5px solid;
+    border: 5px #906a26 solid;
     margin:60px;
 }
 
@@ -40,59 +42,6 @@ label{
     text-align: center;
     margin: 10px 10px;
 }
-/*
-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-flow: column;
-}
-
-.formulario{
-    position: relative;
-    margin: 12px 0;
-}
-
-.formulario .form-label{
-    position: absolute;
-    top: 9px;
-    left: 0;
-    font-size: 18px;
-    color: #acacac;
-    padding: 0 10px;
-    pointer-events: none;
-    transition: 0.15s all ease;
-}
-
-.formulario input:focus + .form-label,
-.formulario input:not(:placeholder-shown) +
-.formulario{
-    transform: translate(5px, -22px);
-    background-color: white;
-    font-size: 14px;
-    color: #020202;
-}
-
-.formulario input{
-    padding: 8px 10px;
-    font-size: 18px;
-    border-radius: 5px;
-    border: #acacac solid 2px;
-    background-color: transparent;
-    color: #050505;
-    transition: 0.15s all ease;
-}
-
-.formulario input:focus{
-    border-color: black;
-}
-
-.formulario input::placeholder{
-    color: transparent;
-}
-*/
-
 
 .formulario{
     cursor: pointer;
